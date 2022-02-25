@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Git提交代码独立使用Git场景
+title: Github提交代码独立使用Git场景
 date: 2020-09-29 23:18 +0800
 last_modified_at: 2020-10-01 01:08:25 +0800
-tags: [Python, 算法技术]
+tags: [代码提交, Github, Git提交代码]
 toc:  true
 ---
 Git提交代码独立使用Git场景.
