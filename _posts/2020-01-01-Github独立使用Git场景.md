@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Github提交代码独立使用Git场景
-date: 2020-09-29 23:18 +0800
+title: Git提交代码基础应用
+date: 2020-01-01 23:18 +0800
 last_modified_at: 2020-10-01 01:08:25 +0800
 tags: [代码提交, Github, Git提交代码]
 toc:  true
@@ -9,7 +9,9 @@ toc:  true
 Git提交代码独立使用Git场景.
 {: .message }
 
-#### 删除无效的分支
+# Git独立使用基本操作
+
+## 删除无效的分支
 
 ```
 git branch -d branch1   //不一定成功删除
@@ -18,7 +20,7 @@ git branch -D branch2   //一定成功删除，强制删除
 
 
 
-#### 修改最新commit的message
+## 修改最新commit的message
 
 已经提交了commit，但是其message写错了，需要修改下：（即修改最新commit的message）
 
@@ -28,7 +30,7 @@ git commit --amend   //进一步编辑后保存即可
 
 
 
-#### 修改老旧commit的message
+## 修改老旧commit的message
 
 即修改非第一个commit的mesage：
 
@@ -45,10 +47,7 @@ git rebase -i commitID  // commitID为待修改message的前一个commit的ID（
 但是其所有commit的内容和修改都不会改变，只改了待修改message的commit的message。
 
 
-
-
-
-#### 将连续的多个commit合并为1个commit
+## 将连续的多个commit合并为1个commit
 
 假设 commit 的提交记录为： commit1、commit2、commit3、commit4、commit5，这是时间顺序，head在commit5，要将中间的commit2、commit3和commit4合并。
 
@@ -67,7 +66,7 @@ git rebase -i commit1
 
 
 
-#### 将不连续的多个commit合并为一个commit
+## 将不连续的多个commit合并为一个commit
 
 假设 commit 的提交记录为： commit1、commit2、commit3、commit4、commit5，这是时间顺序，head在commit5，要将中间的commit2和commit4合并。
 
@@ -81,8 +80,7 @@ git rebase -i commit1
 ```
 
 
-
-#### 比较修改 git diff
+## 比较修改 git diff
 
 1、比较**当前修改与暂存区**对应版本的差异：（这个时候修改还没在缓存区，即没有add）
 
@@ -102,7 +100,7 @@ git diff --cached
 
 
 
-#### 工作区、暂存区和两者的diff
+## 工作区、暂存区和两者的diff
 
 1、工作区：当前修改的，还未add的时候，修改在工作区
 
@@ -114,7 +112,7 @@ git diff --cached
 
 
 
-#### 将暂存区的修改（恢复到HEAD版本）去掉恢复到工作区
+## 将暂存区的修改（恢复到HEAD版本）去掉恢复到工作区
 
 背景：对代码进行修改，并已经add到暂存区，但是现在不想要这个修改，咋办。
 
@@ -129,7 +127,7 @@ git reset HEAD -- filename    // 将暂存区的某个文件恢复到与HEDA指�
 
 
 
-#### 将工作区恢复成暂存区的版本
+## 将工作区恢复成暂存区的版本
 
 背景：开始进行了修改，并进行了add，修改添加到了暂存区；后面又一次在工作区进行了修改，但是呢发现这个修改不好（并未add还在工作区的修改），想把工作区恢复成暂存区的代码版本。
 
@@ -139,7 +137,7 @@ git checkout -- filename     //对工作区中filename文件恢复成暂存区�
 
 
 
-#### 暂存区与工作区
+## 暂存区与工作区
 
 ```
 git status
@@ -150,7 +148,7 @@ git status
 
 
 
-#### 消除最近几次的commit，暂存区和工作区都恢复到某个commit的版本
+## 消除最近几次的commit，暂存区和工作区都恢复到某个commit的版本
 
 背景：文件进行了3次修改，提交了三个commit，分别是commit1、commit2、commit3（最后一个），现在要把代码（HEAD指针、工作区、暂存区）都恢复到 commit1的代码版本。
 
@@ -161,10 +159,7 @@ git reset --hard commit1(ID)
 命令慎用：因为会直接将commit删除，修改都没了，commit2和3的修改永远都找不回来了。这种操作会直接导致本地文件的改变。
 
 
-
-
-
-#### 比较不同commit的指定（所有）文件的差异
+## 比较不同commit的指定（所有）文件的差异
 
 背景：比较不同commit对应代码版本的区别，或者某个文件的区别
 
@@ -182,7 +177,7 @@ git diff branch1 branch2 -- filename
 
 
 
-#### 正确删除文件
+## 正确删除文件
 
 背景：一般情况下 删除文件，都是现在工作区  rm -rf  filename， 删除文件。然后在add，提交一个删除文件的commit。可以直接通过 git  的 rm命令：
 
@@ -192,7 +187,7 @@ git rm filename   //从工作区和暂存区同时删除了该文件
 
 
 
-#### stash相关操作
+## stash相关操作
 
 背景：当前在工作区修改，修改还没有到缓存区，又接到一个新的需求，要开发，那么，可以当前工作区的修改存起来，然后再在当前的工作区进行新需求的开发，开发后需求的修改保存到暂存区后，再进行吧之前保存的工作区的修改拿出来继续修改。
 
@@ -217,7 +212,7 @@ git stash pop     //将当前缓存区堆栈的最新修改拿出来放到工作
 
 
 
-#### 指定不需要Git管理的文件
+## 指定不需要Git管理的文件
 
 进： www.github.com/github/gitignore  可以看官方的 ignore文件如何写。（github针对不同的编程语言和框架会有不同的gitingore的模板）
 
@@ -231,7 +226,7 @@ eg：比如一些编译后的结果，比如C++编译后的exe文件等都是需
 
 
 
-#### GIt仓库本地备份
+## GIt仓库本地备份
 
 1、常用协议：
 
@@ -252,5 +247,3 @@ eg：比如一些编译后的结果，比如C++编译后的exe文件等都是需
 Git中的仓库的概念，仓库可以理解为一个代码库，这个Git代码库可以在本地，也可以在远程，那么就存在远程与远程、远程与本地、本地与本地三种形式的Git仓库之间的传输。
 
 要注意的是：GIt本地仓库之间也是可以通过协议传输复制、push等操作的。eg：可以在C盘创一个Git仓库，在D盘clone一下，然后，提MR、push等都push到C盘的那个仓库。这个时候 git remote add xx的时候，给一个本地的git仓库的地址就可以了。然后还是和正常一样提MR等一样了。
-
-
