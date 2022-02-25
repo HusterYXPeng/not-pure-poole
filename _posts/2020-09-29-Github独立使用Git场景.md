@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 独立使用Git场景
+title: Git提交代码独立使用Git场景
 date: 2020-09-29 23:18 +0800
 last_modified_at: 2020-10-01 01:08:25 +0800
 tags: [Python, 算法技术]
 toc:  true
 ---
-学习.
+Git提交代码独立使用Git场景.
 {: .message }
 
 #### 删除无效的分支
