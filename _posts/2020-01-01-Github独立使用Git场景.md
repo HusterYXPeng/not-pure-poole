@@ -6,10 +6,8 @@ last_modified_at: 2020-10-01 01:08:25 +0800
 tags: [代码提交, Github, Git提交代码]
 toc:  true
 ---
-Git提交代码独立使用Git场景.
 {: .message }
 
-# Git独立使用基本操作
 
 ## 删除无效的分支
 
